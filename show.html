@@ -1,0 +1,40 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Prata|Text+Me+One|Playfair+Display" rel="stylesheet">
+  <script src="data.js"></script>
+  <script src="D3.js"></script>
+  <style type="text/css">
+  .domain, .tick{
+      fill:none;
+      stroke:black;
+      shape-rendering: crispEdges;
+    }
+    h1,h3{
+      color: #21060d;
+      font-family:'Text Me One', sans-serif;
+      font-size: 30px;
+    }
+    svg text {
+      font-family:'Text Me One', sans-serif;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body bgcolor="#a08cdb">
+<h1>Republicans vs Democrats</h1>
+<h3>Type the name of any U.S State (example: New York)</h3>
+  <input id='state'></input>
+  <h1 id='title'></h1>
+  <div id='chart'></div>
+
+  <script type="text/javascript">
+    var chart;
+    d3.select('#state').on('input',function(){
+      if (chart) chart.remove();
+      var title = d3.select('#title').text(this.value);
+      chart = scatter(getState(this.value));
+    });
+
+  </script>
+
+</body>
